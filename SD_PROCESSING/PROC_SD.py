@@ -35,6 +35,8 @@ iridata = pd.DataFrame()
 #concat log numbers and add timestamps - NOTE: timestamps are assigned from first gps time correlation 
 #to millis for each log file. Over larger log file there will be some drift
 for log_number in log_list:
+	print("processing log number: ",end='')
+	print(log_number)
 
 	#gps concat
 	if(log_number+'_GPS.CSV') in file_list:
@@ -185,7 +187,7 @@ with open('testinfo.txt','w') as testinfo:
 
 	testinfo.write("\n")
 	testinfo.write("\n")
-	testinfo.write("\n")
+	testinfo.write("\n")sys
 	testinfo.write("\n")
 	testinfo.write("Errors Logged:")
 	testinfo.write("\n")
@@ -204,15 +206,7 @@ iridata.to_csv("iridata.CSV")
 
 
 
-'''
-	#spc concat
-	if(log_number+'_SPC.CSV') in file_list:
-		tempspc = pd.read_csv(log_number+'_SPC.CSV')
-		tempspc['Session_ID']=log_number
-		tempspc.index = start_time + tempspc['ard_millis'].apply(lambda x: dt.timedelta(milliseconds = float(x)))
 
-		#append to DF
-		spcdata = spcdata.append(temppow)'''
 
 
 

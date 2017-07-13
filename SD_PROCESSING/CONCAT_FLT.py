@@ -1,3 +1,11 @@
+#command line instructions:
+#	1. Move CONCAT_FLT to SD data directory
+#	2. From data directory in terminal 'Python3 CONCAT_FLT.py'
+
+#python requirements
+#-Python 3 distribution
+#-Scipy distribution including pandas see https://www.scipy.org/
+
 import os
 import pandas as pd
 

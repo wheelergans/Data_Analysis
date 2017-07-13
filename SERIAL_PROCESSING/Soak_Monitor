@@ -1,0 +1,35 @@
+#!/usr/bin/env python
+#Created by Wheeler Gans
+
+import os
+import datetime as dt
+import serial
+
+name = input("Type name of USB device: ")
+device_name = input("enter device id: ")
+
+outfile_name = device_name + '_' + str(dt.datetime.now().month) + '_' + str(dt.datetime.now().day)
+
+outfile = open(outfile_name, 'w',100)
+outfile.write("Device ID: ")
+outfile.write(device_name)
+outfile.write("Start Time: ")
+outfile.write(str(dt.datetime.now()))
+outfile.write("\n")
+outfile.write("\n")
+outfile.write("\n")
+
+addr = "/dev/"+name
+baud = 57600 ## baud rate for instrument
+
+ser = serial.Serial(
+    port = addr,\
+    baudrate = baud,\
+    timeout=10)
+
+print("Connected to: " + ser.portstr)
+ser.flush()
+while True:
+    line = ser.readline()
+    outfile.write(line.decode())
+    print(line.decode().rstrip())
