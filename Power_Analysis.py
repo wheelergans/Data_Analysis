@@ -7,21 +7,19 @@ from matplotlib.font_manager import FontProperties
 
 cwd = os.getcwd()
 #prompt user for data director
-datadir = input('Enter the data director path: ')
+datadir = os.getcwd()
 #change to data directory
 os.chdir(datadir)
 print('path changed to : '+ datadir)
 
 try:
 	#read in csv and parse dates
-	pow_data = pd.read_csv('POW_LOG.CSV',index_col = 0,parse_dates = True)
+	pow_data = pd.read_csv('powdata.CSV',index_col = 0,parse_dates = True)
 
 	#calc powers
-	pow_data['sol_I'] = (pow_data.loc[:,'sol_I_0':'sol_I_4'].sum(axis = 1))
 	pow_data['solP'] = pow_data.sol_V*pow_data.sol_I
-	pow_data['battP'] = pow_data.batt_I*pow_data.batt_V
+	pow_data['battP'] = pow_data.batt_I*pow_data._batt_V
 	pow_data['busP'] = pow_data.bus_I*pow_data.bus_V
-	pow_data['DCP'] = pow_data.DC_V*pow_data.DC_I
 
 	#fill system efficiency column with nan
 	pow_data['system_n'] = np.nan

@@ -187,7 +187,7 @@ with open('testinfo.txt','w') as testinfo:
 
 	testinfo.write("\n")
 	testinfo.write("\n")
-	testinfo.write("\n")sys
+	testinfo.write("\n")
 	testinfo.write("\n")
 	testinfo.write("Errors Logged:")
 	testinfo.write("\n")
